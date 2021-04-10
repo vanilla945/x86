@@ -53,13 +53,6 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-        
-    - name: 自定义插件主题。
-      run: |
-        cd package
-        mkdir openwrt-packages
-        cd openwrt-packages
-        git clone https://github.com/xiaorouji/openwrt-passwall.git
 
     - name: Clone source code
       working-directory: /workdir
@@ -67,6 +60,13 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        
+    - name: 自定义passwall
+      run: |
+        cd package
+        mkdir openwrt-packages
+        cd openwrt-packages
+        git clone https://github.com/xiaorouji/openwrt-passwall.git
 
     - name: Load custom feeds
       run: |
