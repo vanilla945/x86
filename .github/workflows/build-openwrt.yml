@@ -63,7 +63,7 @@ jobs:
         
     - name: 自定义passwall
       run: |
-        cd package
+        cd openwrt/package
         mkdir passwall
         cd passwall
         git clone https://github.com/xiaorouji/openwrt-passwall
